@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>VOLT ARCADE Tesla Car Games 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet" />
+<style>
+* { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; scroll-behavior:smooth; }
+body {
+color:#e8ecf4; font-family:'Rajdhani',sans-serif; overflow-x:hidden;
+background:
+radial-gradient(1200px 600px at 50% -10%, rgba(232,33,39,.16), transparent 60%),
+radial-gradient(800px 400px at 85% 90%, rgba(88,166,255,.08), transparent 60%),
+#05070d;
+}
+
+/* ===== NAVBAR ===== */
+nav {
+position:sticky; top:0; z-index:100; display:flex; align-items:center;
+justify-content:space-between; padding:14px 5vw;
+background:rgba(5,7,13,.75); backdrop-filter:blur(14px);
+border-bottom:1px solid rgba(255,255,255,.08);
+}
+.logo { font-family:'Orbitron',sans-serif; font-weight:900; letter-spacing:3px; font-size:1.15rem; }
+.logo span { color:#e82127; }
+nav .links { display:flex; gap:26px; }
+nav a {
+color:#9aa4b2; text-decoration:none; font-weight:700; letter-spacing:2px;
+font-size:.85rem; text-transform:uppercase; transition:color .2s;
+}
+nav a:hover, nav a.active { color:#fff; }
+.nav-cta {
+background:linear-gradient(90deg,#e82127,#ff5b5b); color:#fff !important;
+padding:9px 22px; border-radius:30px; box-shadow:0 4px 18px rgba(232,33,39,.4);
+}
+@media (max-width:700px) { nav .links a:not(.nav-cta) { display:none; } }
+
+section { max-width:1100px; margin:0 auto; padding:70px 20px; }
+
+/* ===== HERO ===== */
+.hero { text-align:center; padding-top:90px; padding-bottom:60px; position:relative; }
+.hero .badge {
+display:inline-block; padding:5px 16px; border-radius:20px; font-size:.72rem;
+letter-spacing:3px; font-weight:700; color:#ff6b6b;
+background:rgba(232,33,39,.10); border:1px solid rgba(232,33,39,.35);
+}
+.hero h1 {
+font-family:'Orbitron',sans-serif; font-size:clamp(2.2rem, 7vw, 4.2rem);
+font-weight:900; letter-spacing:6px; margin:18px 0 10px; line-height:1.15;
+background:linear-gradient(90deg,#fff, #9aa4b2 45%, #e82127);
+-webkit-background-clip:text; background-clip:text; color:transparent;
+animation:rise .9s ease both;
+}
+@keyframes rise { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:none; } }
+.hero p.sub { color:#8b95a7; font-size:clamp(1rem, 2.4vw, 1.3rem); letter-spacing:1px; animation:rise .9s .15s ease both; }
+.hero .ctas { margin-top:30px; display:flex; gap:14px; justify-content:center; flex-wrap:wrap; animation:rise .9s .3s ease both; }
+.btn {
+font-family:'Orbitron',sans-serif; font-weight:700; letter-spacing:3px; font-size:.9rem;
+padding:15px 40px; border-radius:40px; cursor:pointer; text-decoration:none;
+transition:transform .15s, box-shadow .15s;
+}
+.btn.primary { color:#fff; background:linear-gradient(90deg,#e82127,#ff5b5b); box-shadow:0 8px 30px rgba(232,33,39,.45); }
+.btn.ghost { color:#cfd6e0; border:1px solid rgba(255,255,255,.25); }
+.btn:hover { transform:scale(1.06); }
+.hero-stats { display:flex; gap:30px; justify-content:center; margin-top:44px; flex-wrap:wrap; animation:rise .9s .45s ease both; }
+.hero-stats div { text-align:center; }
+.hero-stats b { font-family:'Orbitron',sans-serif; font-size:1.5rem; color:#fff; display:block; }
+.hero-stats span { color:#66707f; font-size:.78rem; letter-spacing:2px; text-transform:uppercase; }
+
+/* ===== SECTION HEADERS ===== */
+.sec-head { text-align:center; margin-bottom:36px; }
+.sec-head h2 { font-family:'Orbitron',sans-serif; font-size:clamp(1.4rem,4vw,2.1rem); letter-spacing:4px; }
+.sec-head p { color:#8b95a7; margin-top:6px; letter-spacing:1px; }
+
+/* ===== SHOWROOM ===== */
+.garage { display:flex; gap:18px; flex-wrap:wrap; justify-content:center; }
+.car-card {
+width:280px; padding:20px; text-align:center;
+background:rgba(255,255,255,.045); border:1px solid rgba(255,255,255,.09);
+border-radius:20px; backdrop-filter:blur(10px);
+transition:transform .2s, border-color .2s, box-shadow .2s;
+}
+.car-card:hover { transform:translateY(-6px); border-color:rgba(232,33,39,.6); box-shadow:0 18px 50px rgba(232,33,39,.18); }
+.car-art { height:110px; display:flex; align-items:center; justify-content:center; margin-bottom:8px; }
+.car-card h3 { font-family:'Orbitron',sans-serif; font-size:1rem; letter-spacing:1px; }
+.car-card .tag { color:#8b95a7; font-size:.82rem; display:block; margin:4px 0 12px; }
+.specs { text-align:left; font-size:.85rem; display:grid; gap:7px; }
+.specs .row { display:flex; justify-content:space-between; color:#9aa4b2; letter-spacing:.5px; }
+.specs .row b { color:#e8ecf4; }
+.car-card .pick {
+margin-top:14px; display:inline-block; padding:8px 26px; border-radius:24px; cursor:pointer;
+font-family:'Orbitron',sans-serif; font-size:.75rem; letter-spacing:2px; font-weight:700;
+border:1px solid rgba(255,255,255,.2); color:#cfd6e0; transition:all .2s;
+}
+.car-card.picked .pick, .car-card .pick:hover {
+background:linear-gradient(90deg,#e82127,#ff5b5b); color:#fff; border-color:transparent;
+box-shadow:0 6px 20px rgba(232,33,39,.45);
+}
+.car-card.picked { border-color:rgba(232,33,39,.8); box-shadow:0 0 0 1px rgba(232,33,39,.4), 0 18px 50px rgba(232,33,39,.22); }
+
+/* ===== GAME ===== */
+#play .stage {
+position:relative; width:min(560px, 100%); margin:0 auto; border-radius:20px; overflow:hidden;
+border:1px solid rgba(255,255,255,.10);
+box-shadow:0 30px 80px rgba(0,0,0,.6), 0 0 60px rgba(232,33,39,.12);
+}
+canvas { display:block; width:100%; height:auto; }
+#hud {
+position:absolute; top:10px; left:12px; right:12px; display:flex; gap:6px;
+justify-content:space-between; flex-wrap:wrap; pointer-events:none;
+font-family:'Orbitron',sans-serif; font-weight:700; font-size:.8rem;
+text-shadow:0 2px 8px rgba(0,0,0,.9); letter-spacing:1px;
+}
+.hud-pill { padding:5px 12px; border-radius:18px; background:rgba(5,7,13,.55);
+border:1px solid rgba(255,255,255,.12); backdrop-filter:blur(6px); }
+#battPill.low { color:#ff6b6b; border-color:rgba(232,33,39,.6); animation:blink 1s infinite; }
+#altPill.flying { color:#7ee787; border-color:rgba(126,231,135,.5); }
+@keyframes blink { 50% { opacity:.4; } }
+#overlay {
+position:absolute; inset:0; display:flex; flex-direction:column; align-items:center;
+justify-content:center; text-align:center; gap:14px; padding:20px;
+background:rgba(5,7,13,.74); backdrop-filter:blur(8px); z-index:5;
+}
+#overlay.hidden { display:none; }
+#ovTitle { font-family:'Orbitron',sans-serif; font-size:1.6rem; letter-spacing:2px; }
+#ovText { color:#9aa4b2; max-width:420px; line-height:1.55; }
+#nameInput {
+background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.2); color:#fff;
+font-family:'Rajdhani',sans-serif; font-size:1rem; font-weight:600; letter-spacing:1px;
+padding:10px 18px; border-radius:30px; outline:none; text-align:center; width:230px;
+}
+#joy {
+position:absolute; left:16px; bottom:16px; width:130px; height:130px; border-radius:50%;
+z-index:4; touch-action:none;
+background:radial-gradient(circle at 38% 32%, rgba(255,255,255,.10), rgba(255,255,255,.03) 60%, transparent);
+border:2px solid rgba(255,255,255,.18);
+box-shadow:inset 0 4px 18px rgba(0,0,0,.5), 0 8px 24px rgba(0,0,0,.4);
+backdrop-filter:blur(4px); cursor:grab;
+}
+#joy::after { content:""; position:absolute; inset:0; display:flex; align-items:center;
+justify-content:center; font-size:1.4rem; color:rgba(255,255,255,.25); pointer-events:none; }
+#joyKnob {
+position:absolute; left:50%; top:50%; width:56px; height:56px; margin:-28px 0 0 -28px;
+border-radius:50%; pointer-events:none;
+background:radial-gradient(circle at 35% 30%, #ff8a8a, #e82127 60%, #a11318);
+box-shadow:0 6px 16px rgba(232,33,39,.55), inset 0 2px 6px rgba(255,255,255,.35);
+}
+#brakeBtn {
+position:absolute; right:16px; bottom:30px; width:74px; height:74px; z-index:4;
+border-radius:50%; border:2px solid rgba(255,255,255,.2); color:#fff;
+background:rgba(5,7,13,.55); backdrop-filter:blur(6px); cursor:pointer;
+font-family:'Orbitron',sans-serif; font-size:.7rem; letter-spacing:1px; font-weight:700; touch-action:none;
+}
+#brakeBtn:active { background:rgba(232,33,39,.45); }
+.flyHint { position:absolute; right:16px; bottom:115px; z-index:4; font-size:.72rem;
+color:#7ee787; font-weight:700; letter-spacing:1px; text-shadow:0 2px 6px #000; pointer-events:none; }
+
+/* ===== HOW TO PLAY ===== */
+.howto { display:grid; grid-template-columns:repeat(auto-fit, minmax(230px, 1fr)); gap:16px; }
+.how-card {
+background:rgba(255,255,255,.045); border:1px solid rgba(255,255,255,.09);
+border-radius:18px; padding:22px; text-align:center; backdrop-filter:blur(10px);
+}
+.how-card .ico { font-size:2rem; }
+.how-card h4 { font-family:'Orbitron',sans-serif; font-size:.9rem; letter-spacing:1px; margin:10px 0 6px; }
+.how-card p { color:#8b95a7; font-size:.9rem; line-height:1.5; }
+kbd { background:rgba(255,255,255,.10); border:1px solid rgba(255,255,255,.15); padding:2px 8px;
+border-radius:6px; color:#fff; font-family:'Orbitron',sans-serif; font-size:.72rem; }
+
+/* ===== LEADERBOARD ===== */
+#board { width:min(560px, 100%); margin:0 auto; border-collapse:collapse; }
+#board th { font-family:'Orbitron',sans-serif; font-size:.72rem; letter-spacing:2px;
+color:#66707f; text-transform:uppercase; padding:10px 14px; text-align:left; }
+#board td { padding:11px 14px; border-top:1px solid rgba(255,255,255,.07); font-weight:600; letter-spacing:.5px; }
+#board tr.top td { color:#ffd76a; }
+#board td.rank { font-family:'Orbitron',sans-serif; color:#9aa4b2; }
+.empty { text-align:center; color:#66707f; padding:30px; letter-spacing:1px; }
+
+footer { text-align:center; padding:40px 20px 50px; color:#4a5261; font-size:.82rem;
+letter-spacing:.5px; border-top:1px solid rgba(255,255,255,.06); }
+footer .logo { margin-bottom:8px; }
+</style>
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav>
+<div class="logo">VOLT<span>ARCADE</span></div>
+<div class="links">
+<a href="#showroom">Showroom</a>
+<a href="#how">How to Play</a>
+<a href="#ranks">Leaderboard</a>
+<a href="#play" class="nav-cta"> Play Now</a>
+</div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+<span class="badge"> 2026 TESLA LINEUP FAN GAME</span>
+<h1>TESLA FLIGHT RUNNER</h1>
+<p class="sub">Drive the new 2026 Teslas. Race the neon highway. Push up and FLY. </p>
+<div class="ctas">
+<a href="#play" class="btn primary"> PLAY FREE NOW</a>
+<a href="#showroom" class="btn ghost">VIEW SHOWROOM</a>
+</div>
+<div class="hero-stats">
+<div><b>3</b><span>New 2026 Teslas</span></div>
+<div><b>2</b><span>Game Modes Drive & Fly</span></div>
+<div><b>1</b><span>Click to Start No Install</span></div>
+</div>
+</section>
+
+<!-- ===== SHOWROOM ===== -->
+<section id="showroom">
+<div class="sec-head">
+<h2>THE SHOWROOM</h2>
+<p>Pick your Tesla each one drives, flies and drains battery differently.</p>
+</div>
+<div class="garage" id="garage"></div>
+</section>
+
+<!-- ===== GAME ===== -->
+<section id="play">
+<div class="sec-head">
+<h2> PLAY TESLA FLIGHT RUNNER</h2>
+<p>Steer with the joystick or arrow keys. Push UP to fly over traffic. Grab to recharge.</p>
+</div>
+<div class="stage">
+<canvas id="game" width="560" height="740"></canvas>
+<div id="hud">
+<span class="hud-pill" id="scorePill"> 0</span>
+<span class="hud-pill" id="speedPill">0 KM/H</span>
+<span class="hud-pill" id="altPill"> GROUND</span>
+<span class="hud-pill" id="battPill"> 100%</span>
+</div>
+<div id="overlay">
+<div id="ovTitle">READY TO RACE?</div>
+<p id="ovText">Enter your racer name, then hit START.<br><br> Joystick: steer left/right push UP to fly<br> Keys: <kbd></kbd><kbd></kbd> steer <kbd></kbd><kbd></kbd> fly/land <kbd>Space</kbd> brake</p>
+<input id="nameInput" placeholder="YOUR RACER NAME" maxlength="12" />
+<button id="startBtn" class="btn primary" style="border:none">START RACE</button>
+<p class="empty" id="bestHint" style="padding:0"></p>
+</div>
+<div id="joy"><div id="joyKnob"></div></div>
+<button id="brakeBtn">BRAKE</button>
+<div class="flyHint">PUSH UP<br>TO FLY </div>
+</div>
+</section>
+
+<!-- ===== HOW TO PLAY ===== -->
+<section id="how">
+<div class="sec-head">
+<h2>HOW TO PLAY</h2>
+<p>Master the road and the sky in 4 easy steps.</p>
+</div>
+<div class="howto">
+<div class="how-card"><div class="ico"></div><h4>1 STEER</h4><p>Drag the joystick or use <kbd></kbd> <kbd></kbd>. Hold <kbd>Space</kbd> or the BRAKE button to slow down.</p></div>
+<div class="how-card"><div class="ico"></div><h4>2 FLY</h4><p>Push the joystick UP (or <kbd></kbd>) to lift off wheels tuck in, thrusters ignite. Pull DOWN to land.</p></div>
+<div class="how-card"><div class="ico"></div><h4>3 RECHARGE</h4><p>Collect glowing supercharges on the road AND in the sky. Flying drains battery ~2.4 faster!</p></div>
+<div class="how-card"><div class="ico"></div><h4>4 SURVIVE</h4><p>On ground, dodge traffic. In the sky, dodge drones. Run out of charge and the race is over.</p></div>
+</div>
+</section>
+
+<!-- ===== LEADERBOARD ===== -->
+<section id="ranks">
+<div class="sec-head">
+<h2> LEADERBOARD</h2>
+<p>Top 10 racers on this browser. Set a new record to claim #1!</p>
+</div>
+<table id="board">
+<thead><tr><th>Rank</th><th>Racer</th><th>Car</th><th>Score</th></tr></thead>
+<tbody id="boardBody"></tbody>
+</table>
+<p class="empty" id="boardEmpty">No races yet be the first legend! </p>
+</section>
+
+<footer>
+<div class="logo">VOLT<span>ARCADE</span></div>
+Inspired by Tesla's 2026 launches Model Y Juniper Cybercab Roadster 2.0.<br>
+Fan project for entertainment. Not affiliated with Tesla, Inc.
+</footer>
+
+<script>
+/* ============ TESLA DATA (2026 lineup) ============ */
+const CARS = [
+{ name:"ROADSTER 2.0", tag:"2026 Reveal 400+ km/h Hypercar", top:210, accel:.95, drain:.010, fly:.55, body:["#eef1f5","#aab2bd"], glass:"#101827", stripe:"#e82127" },
+{ name:"MODEL Y JUNIPER", tag:"Jan 2026 Launch 660 km WLTP range", top:170, accel:.72, drain:.006, fly:.75, body:["#2c3444","#141a26"], glass:"#0b101b", stripe:"#58a6ff" },
+{ name:"CYBERCAB", tag:"Q2 2026 Production Robotaxi", top:150, accel:.66, drain:.008, fly:1.0, body:["#c9ced6","#8a929e"], glass:"#0e1420", stripe:"#7ee787" }
+];
+
+/* ============ SHOWROOM CARDS ============ */
+let selected = 0;
+const garage = document.getElementById("garage");
+CARS.forEach((c, i) => {
+const card = document.createElement("div");
+card.className = "car-card" + (i === 0 ? " picked" : "");
+const svg = `<svg width="200" height="100" viewBox="0 0 200 100">
+<defs><linearGradient id="g${i}" x1="0" x2="1"><stop offset="0" stop-color="${c.body[1]}"/><stop offset=".5" stop-color="${c.body[0]}"/><stop offset="1" stop-color="${c.body[1]}"/></linearGradient></defs>
+<ellipse cx="100" cy="88" rx="72" ry="7" fill="rgba(0,0,0,.5)"/>
+<rect x="28" y="26" width="144" height="58" rx="16" fill="url(#g${i})"/>
+<rect x="52" y="32" width="96" height="20" rx="8" fill="${c.glass}"/>
+<rect x="56" y="62" width="88" height="12" rx="6" fill="${c.glass}" opacity=".8"/>
+<rect x="97" y="26" width="6" height="58" fill="${c.stripe}"/>
+<rect x="34" y="22" width="20" height="5" rx="2" fill="#ffedb0"/><rect x="146" y="22" width="20" height="5" rx="2" fill="#ffedb0"/>
+<rect x="34" y="80" width="22" height="5" rx="2" fill="#ff3b3b"/><rect x="144" y="80" width="22" height="5" rx="2" fill="#ff3b3b"/>
+<rect x="30" y="70" width="10" height="16" fill="#0a0d12"/><rect x="160" y="70" width="10" height="16" fill="#0a0d12"/>
+</svg>`;
+card.innerHTML = `${svg}<h3>${c.name}</h3><span class="tag">${c.tag}</span>
+<div class="specs">
+<div class="row"><span>Top Speed</span><b>${c.top} km/h</b></div>
+<div class="row"><span>Efficiency</span><b>${(1/c.drain).toFixed(0)}</b></div>
+<div class="row"><span>Flight Time</span><b>${Math.round(c.fly*100)}%</b></div>
+</div><br><span class="pick" data-i="${i}">${i === 0 ? " SELECTED" : "SELECT"}</span>`;
+card.querySelector(".pick").onclick = () => {
+document.querySelectorAll(".car-card").forEach(el => el.classList.remove("picked"));
+document.querySelectorAll(".car-card .pick").forEach(el => el.textContent = "SELECT");
+card.classList.add("picked");
+card.querySelector(".pick").textContent = " SELECTED";
+selected = i; if (state === "menu") drawIdle();
+};
+garage.appendChild(card);
+});
+
+/* ============ LEADERBOARD (localStorage) ============ */
+function getBoard() { return JSON.parse(localStorage.getItem("voltBoard") || "[]"); }
+function saveScore(name, carName, score) {
+const b = getBoard();
+b.push({ name, car: carName, score: Math.floor(score) });
+b.sort((x,y) => y.score - x.score);
+localStorage.setItem("voltBoard", JSON.stringify(b.slice(0,10)));
+renderBoard();
+}
+function renderBoard() {
+const b = getBoard(), tb = document.getElementById("boardBody");
+document.getElementById("boardEmpty").style.display = b.length ? "none" : "block";
+document.getElementById("board").style.display = b.length ? "table" : "none";
+tb.innerHTML = "";
+b.forEach((r, i) => {
+const tr = document.createElement("tr");
+if (i === 0) tr.className = "top";
+const medal = ["","",""][i] || ("#" + (i+1));
+tr.innerHTML = `<td class="rank">${medal}</td><td>${r.name}</td><td style="color:#8b95a7">${r.car}</td>
+<td style="font-family:Orbitron;color:#fff"> ${r.score}</td>`;
+tb.appendChild(tr);
+});
+}
+renderBoard();
+
+/* ============ GAME ENGINE ============ */
+const cv = document.getElementById("game"), ctx = cv.getContext("2d");
+const W = cv.width, H = cv.height;
+const overlay = document.getElementById("overlay"), ovTitle = document.getElementById("ovTitle"),
+ovText = document.getElementById("ovText"), startBtn = document.getElementById("startBtn"),
+nameInput = document.getElementById("nameInput"), bestHint = document.getElementById("bestHint");
+const RX = 56, RW = W - 112, LANES = 3, LW = RW / LANES;
+
+let state = "menu", car, traffic, drones, bolts, sparks;
+let score, battery, speed, roadOff, spawnT, shake = 0, countdown = 0, keys = {}, tPrev = 0;
+const board = getBoard();
+bestHint.textContent = board.length ? " Current #1: " + board[0].name + " " + board[0].score : "";
+
+/* audio */
+let AC, engineOsc, engineGain, flyOsc, flyGain;
+function initAudio() {
+if (AC) return;
+AC = new (window.AudioContext || window.webkitAudioContext)();
+engineOsc = AC.createOscillator(); engineGain = AC.createGain();
+engineOsc.type = "sawtooth"; engineOsc.frequency.value = 55; engineGain.gain.value = .03;
+engineOsc.connect(engineGain).connect(AC.destination); engineOsc.start();
+flyOsc = AC.createOscillator(); flyGain = AC.createGain();
+flyOsc.type = "sine"; flyOsc.frequency.value = 200; flyGain.gain.value = 0;
+flyOsc.connect(flyGain).connect(AC.destination); flyOsc.start();
+}
+function beep(freq, dur, type = "sine", vol = .12) {
+if (!AC) return;
+const o = AC.createOscillator(), g = AC.createGain();
+o.type = type; o.frequency.value = freq; g.gain.value = vol;
+o.connect(g).connect(AC.destination); o.start();
+g.gain.exponentialRampToValueAtTime(.0001, AC.currentTime + dur); o.stop(AC.currentTime + dur);
+}
+const crashSound = () => { beep(140,.25,"sawtooth",.2); beep(90,.35,"square",.15); };
+const zapSound = () => { beep(880,.12); setTimeout(() => beep(1320,.15), 90); };
+
+/* joystick */
+const joy = document.getElementById("joy"), knob = document.getElementById("joyKnob");
+let joyVec = { x:0, y:0 }, joyActive = false;
+function moveJoy(e) {
+const r = joy.getBoundingClientRect();
+let dx = e.clientX - (r.left + r.width/2), dy = e.clientY - (r.top + r.height/2);
+const max = r.width/2 - 20, len = Math.hypot(dx, dy);
+if (len > max) { dx = dx/len*max; dy = dy/len*max; }
+joyVec = { x: dx/max, y: dy/max };
+knob.style.transform = `translate(${dx}px, ${dy}px)`;
+}
+joy.addEventListener("pointerdown", e => { joyActive = true; joy.setPointerCapture(e.pointerId); initAudio(); moveJoy(e); });
+joy.addEventListener("pointermove", e => { if (joyActive) moveJoy(e); });
+["pointerup","pointercancel"].forEach(ev => joy.addEventListener(ev, () => {
+joyActive = false; joyVec = { x:0, y:0 }; knob.style.transform = "translate(0,0)";
+}));
+const brakeBtn = document.getElementById("brakeBtn");
+brakeBtn.addEventListener("pointerdown", e => { e.preventDefault(); keys[" "] = true; });
+brakeBtn.addEventListener("pointerup", () => keys[" "] = false);
+
+/* keys */
+addEventListener("keydown", e => {
+keys[e.key] = true;
+if (["ArrowLeft","ArrowRight","ArrowUp","ArrowDown"," "].includes(e.key)) e.preventDefault();
+if (e.key === "p") {
+if (state === "play") { state = "pause"; ovTitle.textContent = "PAUSED"; ovText.innerHTML = "Press <kbd>P</kbd> to resume."; overlay.classList.remove("hidden"); }
+else if (state === "pause") { state = "play"; overlay.classList.add("hidden"); }
+}
+});
+addEventListener("keyup", e => keys[e.key] = false);
+
+/* flow */
+function reset() {
+car = { x: RX + RW/2, y: H - 150, alt: 0, drift: 0 };
+speed = 60; traffic = []; drones = []; bolts = []; sparks = [];
+score = 0; battery = 100; roadOff = 0; spawnT = 0; shake = 0; countdown = 3.2;
+state = "countdown"; overlay.classList.add("hidden"); initAudio();
+}
+function gameOver() {
+state = "over";
+if (engineGain) engineGain.gain.value = 0;
+if (flyGain) flyGain.gain.value = 0;
+const s = Math.floor(score);
+const name = (nameInput.value.trim() || "RACER").toUpperCase();
+const top10 = getBoard();
+const isRecord = !top10.length || s > top10[0].score;
+saveScore(name, CARS[selected].name, score);
+ovTitle.textContent = "OUT OF CHARGE";
+ovText.innerHTML = `<b style="color:#fff;font-family:Orbitron">${name}</b> scored <b style="color:#fff;font-family:Orbitron">${s}</b> in the <b style="color:#ff6b6b">${CARS[selected].name}</b><br>${isRecord ? " NEW #1 RECORD!" : "Check the leaderboard below "}`;
+startBtn.textContent = "RACE AGAIN";
+overlay.classList.remove("hidden");
+document.getElementById("ranks").scrollIntoView({ behavior:"smooth", block:"nearest" });
+}
+startBtn.onclick = reset;
+
+/* drawing */
+function drawTesla(scale, tilt, c, t) {
+ctx.save();
+ctx.translate(car.x, car.y - car.alt * 130);
+ctx.rotate(tilt); ctx.scale(scale, scale);
+ctx.save();
+ctx.rotate(-tilt); ctx.translate(0, car.alt * 130 / scale);
+ctx.globalAlpha = .45 * (1 - car.alt * .8); ctx.fillStyle = "#000";
+ctx.beginPath(); ctx.ellipse(0, 44, 30*(1+car.alt*.6), 10, 0, 0, 7); ctx.fill();
+ctx.restore();
+if (car.alt > .05) {
+const f = 10 + Math.sin(t/40) * 4;
+ctx.save(); ctx.shadowColor = "#58a6ff"; ctx.shadowBlur = 24;
+ctx.fillStyle = "rgba(88,166,255,.85)";
+ctx.beginPath(); ctx.moveTo(-14,42); ctx.lineTo(-8, 42+f+car.alt*26); ctx.lineTo(-2,42); ctx.fill();
+ctx.beginPath(); ctx.moveTo(14,42); ctx.lineTo(8, 42+f+car.alt*26); ctx.lineTo(2,42); ctx.fill();
+ctx.restore();
+}
+ctx.globalAlpha = .09 * (1 - car.alt * .4); ctx.fillStyle = "#fff";
+ctx.beginPath(); ctx.moveTo(-20,-52); ctx.lineTo(-58,-240); ctx.lineTo(58,-240); ctx.lineTo(20,-52);
+ctx.closePath(); ctx.fill(); ctx.globalAlpha = 1;
+const g = ctx.createLinearGradient(-30,0,30,0);
+g.addColorStop(0,c.body[1]); g.addColorStop(.5,c.body[0]); g.addColorStop(1,c.body[1]);
+ctx.fillStyle = g; ctx.beginPath(); ctx.roundRect(-29,-52,58,104,16); ctx.fill();
+ctx.fillStyle = c.glass;
+ctx.beginPath(); ctx.roundRect(-19,-40,38,24,8); ctx.fill();
+ctx.beginPath(); ctx.roundRect(-18,22,36,17,7); ctx.fill();
+ctx.fillStyle = "rgba(255,255,255,.09)";
+ctx.beginPath(); ctx.roundRect(-24,-10,48,25,10); ctx.fill();
+ctx.fillStyle = c.stripe; ctx.fillRect(-2.5,-52,5,104);
+ctx.shadowColor = "#ff2d2d"; ctx.shadowBlur = 10; ctx.fillStyle = "#ff3b3b";
+ctx.fillRect(-24,47,12,5); ctx.fillRect(12,47,12,5);
+ctx.shadowColor = "#fff7cf"; ctx.fillStyle = "#ffedb0";
+ctx.fillRect(-24,-55,12,5); ctx.fillRect(12,-55,12,5);
+ctx.shadowBlur = 0;
+if (car.alt < .5) {
+ctx.fillStyle = "#0a0d12";
+[-1,1].forEach(s => { ctx.fillRect(s*29-3,-36,7,18); ctx.fillRect(s*29-3,22,7,18); });
+}
+ctx.restore();
+}
+function drawTrafficCar(v) {
+ctx.save();
+ctx.fillStyle = "rgba(0,0,0,.45)";
+ctx.beginPath(); ctx.ellipse(v.x, v.y+44, 28, 9, 0, 0, 7); ctx.fill();
+const g = ctx.createLinearGradient(v.x-30,0,v.x+30,0);
+g.addColorStop(0,v.p[1]); g.addColorStop(.5,v.p[0]); g.addColorStop(1,v.p[1]);
+ctx.fillStyle = g; ctx.beginPath(); ctx.roundRect(v.x-28,v.y-52,56,100,14); ctx.fill();
+ctx.fillStyle = "#141a26";
+ctx.beginPath(); ctx.roundRect(v.x-19,v.y-42,38,22,7); ctx.fill();
+ctx.shadowColor = "#ff2d2d"; ctx.shadowBlur = 8; ctx.fillStyle = "#ff3b3b";
+ctx.fillRect(v.x-24,v.y+47,11,5); ctx.fillRect(v.x+13,v.y+47,11,5);
+ctx.shadowBlur = 0;
+ctx.fillStyle = "#0a0d12";
+[-1,1].forEach(s => { ctx.fillRect(v.x+s*28-3,v.y-36,7,18); ctx.fillRect(v.x+s*28-3,v.y+22,7,18); });
+ctx.restore();
+}
+function drawDrone(d) {
+const dy = d.y - 97;
+ctx.save();
+ctx.fillStyle = "#232a36";
+ctx.beginPath(); ctx.roundRect(d.x-16,dy-9,32,22,8); ctx.fill();
+ctx.strokeStyle = "#3a4354"; ctx.lineWidth = 3;
+ctx.beginPath(); ctx.moveTo(d.x-16,dy-6); ctx.lineTo(d.x-34,dy-18); ctx.moveTo(d.x+16,dy-6); ctx.lineTo(d.x+34,dy-18); ctx.stroke();
+ctx.shadowColor = "#58a6ff"; ctx.shadowBlur = 8; ctx.fillStyle = "#58a6ff";
+[-34,34].forEach(s => { ctx.beginPath(); ctx.ellipse(d.x+s,dy-18,11,3,0,0,7); ctx.fill(); });
+ctx.shadowColor = "#ff2d2d"; ctx.fillStyle = "#ff3b3b";
+ctx.beginPath(); ctx.arc(d.x,dy+9,3,0,7); ctx.fill();
+ctx.shadowBlur = 0; ctx.restore();
+}
+function drawBolt(b, t) {
+const by = b.air ? b.y - 97 : b.y;
+const p = 1 + Math.sin(t/110) * .18;
+ctx.save();
+if (b.air) { ctx.strokeStyle = "rgba(126,231,135,.35)"; ctx.lineWidth = 2;
+ctx.beginPath(); ctx.arc(b.x, by, 22, 0, 7); ctx.stroke(); }
+ctx.translate(b.x, by); ctx.scale(p, p);
+ctx.shadowColor = "#7ee787"; ctx.shadowBlur = 18; ctx.fillStyle = "#9df5a6";
+ctx.beginPath(); ctx.moveTo(6,-16); ctx.lineTo(-9,2); ctx.lineTo(-1,2); ctx.lineTo(-6,16); ctx.lineTo(9,-2); ctx.lineTo(1,-2);
+ctx.closePath(); ctx.fill(); ctx.restore();
+}
+function drawScene(t) {
+const sky = ctx.createLinearGradient(0,0,0,H);
+sky.addColorStop(0,"#04060f"); sky.addColorStop(.35,"#0a1226"); sky.addColorStop(1,"#0b2a14");
+ctx.fillStyle = sky; ctx.fillRect(0,0,W,H);
+ctx.fillStyle = "rgba(255,255,255,.6)";
+for (let i = 0; i < 26; i++) {
+if ((i + Math.floor(t/800)) % 9) ctx.fillRect((i*97.3)%W, (i*53.7)%(H*.4), 1.6, 1.6);
+}
+ctx.fillStyle = "rgba(88,166,255,.06)";
+for (let i = 0; i < 8; i++) ctx.fillRect(i*76, 150-(i*37%90), 60, H);
+const as = ctx.createLinearGradient(RX,0,RX+RW,0);
+as.addColorStop(0,"#1e222a"); as.addColorStop(.5,"#2b303a"); as.addColorStop(1,"#1e222a");
+ctx.fillStyle = as; ctx.fillRect(RX,0,RW,H);
+for (let ly = (roadOff*1.4)%160-160; ly < H+160; ly += 160) {
+[-1,1].forEach(s => {
+const px = s < 0 ? RX-8 : RX+RW+8;
+ctx.strokeStyle = "#3a4150"; ctx.lineWidth = 3;
+ctx.beginPath(); ctx.moveTo(px,ly); ctx.lineTo(px,ly+48); ctx.stroke();
+const gx = s < 0 ? RX+46 : RX+RW-46;
+const gl = ctx.createRadialGradient(gx,ly+80,4,gx,ly+80,75);
+gl.addColorStop(0,"rgba(255,220,130,.12)"); gl.addColorStop(1,"transparent");
+ctx.fillStyle = gl; ctx.beginPath(); ctx.ellipse(gx,ly+80,75,48,0,0,7); ctx.fill();
+});
+}
+ctx.fillStyle = "#f2f2f2"; ctx.fillRect(RX,0,5,H); ctx.fillRect(RX+RW-5,0,5,H);
+ctx.strokeStyle = "rgba(255,255,255,.7)"; ctx.lineWidth = 4;
+ctx.setLineDash([30,36]); ctx.lineDashOffset = -roadOff;
+ctx.beginPath();
+ctx.moveTo(RX+LW,0); ctx.lineTo(RX+LW,H);
+ctx.moveTo(RX+LW*2,0); ctx.lineTo(RX+LW*2,H);
+ctx.stroke(); ctx.setLineDash([]);
+if (state === "play" && speed > 130) {
+ctx.strokeStyle = `rgba(255,255,255,${.06+car.alt*.1})`; ctx.lineWidth = 2;
+for (let i = 0; i < 8; i++) {
+const sx = RX+12+((i*73+t*.6)%(RW-24)), sy = (i*211+roadOff*3)%H;
+ctx.beginPath(); ctx.moveTo(sx,sy); ctx.lineTo(sx,sy+70); ctx.stroke();
+}
+}
+}
+
+/* spawns */
+function spawnTraffic() {
+const lane = Math.floor(Math.random()*LANES);
+const palettes = [["#5a6472","#333b47"],["#4a5568","#272e3a"],["#6d7889","#3d4654"],["#31405a","#1a2334"]];
+traffic.push({ x: RX+lane*LW+LW/2, y: -110, spd: 40+Math.random()*40, p: palettes[Math.floor(Math.random()*4)] });
+}
+function spawnDrone() { const lane = Math.floor(Math.random()*LANES); drones.push({ x: RX+lane*LW+LW/2, y: -130, spd: 50+Math.random()*40 }); }
+function spawnBolt() { const lane = Math.floor(Math.random()*LANES); bolts.push({ x: RX+lane*LW+LW/2, y: -60, air: Math.random() < .45 }); }
+
+function update(dt, t) {
+const c = CARS[selected];
+if (state === "countdown") { countdown -= dt; if (countdown <= 0) state = "play"; return; }
+if (state !== "play") return;
+if (keys[" "]) speed = Math.max(60, speed - 170*dt);
+else speed = Math.min(c.top, speed + c.accel*55*dt);
+score += speed * dt * (1 + car.alt*.3);
+battery -= c.drain * (speed/60) * 60 * dt * (1 + car.alt*1.4);
+const kSteer = ((keys.ArrowLeft||keys.a||keys.A ? -1 : 0) + (keys.ArrowRight||keys.d||keys.D ? 1 : 0));
+const steer = Math.max(-1, Math.min(1, kSteer + joyVec.x));
+car.drift += (steer*360 - car.drift) * Math.min(1, dt*9);
+car.x += car.drift * dt;
+car.x = Math.max(RX+33, Math.min(RX+RW-33, car.x));
+const kUp = ((keys.ArrowUp||keys.w||keys.W)?1:0) - ((keys.ArrowDown||keys.s||keys.S)?1:0);
+car.alt = Math.max(0, Math.min(1, car.alt + Math.max(-1, Math.min(1, kUp - joyVec.y)) * dt * .85));
+roadOff += speed * dt * 1.15;
+if (engineOsc) engineOsc.frequency.value = 45 + speed*.6;
+if (flyGain) flyGain.gain.value = car.alt * .05 * (1 + Math.sin(t/90)*.2);
+spawnT++;
+if (spawnT % Math.round(Math.max(22, 60 - score/20)) === 0) spawnTraffic();
+if (spawnT % 140 === 0 && score > 400) spawnDrone();
+if (spawnT % 80 === 0) spawnBolt();
+traffic.forEach(v => v.y += (v.spd + speed*.75)*dt);
+traffic = traffic.filter(v => v.y < H+140);
+drones.forEach(d => d.y += (d.spd + speed*.8)*dt);
+drones = drones.filter(d => d.y < H+140);
+bolts.forEach(b => b.y += speed*.8*dt);
+bolts = bolts.filter(b => b.y < H+80);
+sparks.forEach(s => { s.x += s.vx*dt; s.y += s.vy*dt; s.life -= dt*2.2; });
+sparks = sparks.filter(s => s.life > 0);
+const carY = car.y - car.alt*130;
+if (car.alt < .28) traffic.forEach(v => {
+if (Math.abs(v.x-car.x) < 42 && Math.abs(v.y-carY) < 78) {
+battery -= 7; speed = Math.max(60, speed-45); shake = .35; crashSound(); v.y = H+400;
+for (let i = 0; i < 16; i++) sparks.push({ x:car.x, y:carY-40, vx:(Math.random()-.5)*320, vy:-Math.random()*280-60, life:1 });
+}
+});
+if (car.alt > .5) drones.forEach(d => {
+if (Math.abs(d.x-car.x) < 40 && Math.abs(d.y-97-carY) < 60) {
+battery -= 9; speed = Math.max(60, speed-55); shake = .45; crashSound(); d.y = H+400;
+for (let i = 0; i < 18; i++) sparks.push({ x:car.x, y:carY-20, vx:(Math.random()-.5)*340, vy:(Math.random()-.5)*340, life:1, blue:true });
+}
+});
+bolts.forEach(b => {
+const by = b.air ? b.y-97 : b.y;
+const altOk = b.air ? car.alt > .5 : car.alt < .35;
+if (altOk && Math.hypot(b.x-car.x, by-carY) < 52) {
+battery = Math.min(100, battery+12); score += 30; zapSound(); b.dead = true;
+for (let i = 0; i < 9; i++) sparks.push({ x:b.x, y:by, vx:(Math.random()-.5)*220, vy:(Math.random()-.5)*220, life:1, green:true });
+}
+});
+bolts = bolts.filter(b => !b.dead);
+shake = Math.max(0, shake - dt);
+if (battery <= 0) { battery = 0; gameOver(); }
+}
+
+function render(t) {
+ctx.save();
+if (shake > 0) ctx.translate((Math.random()-.5)*12*shake*3, (Math.random()-.5)*9*shake*3);
+drawScene(t);
+traffic.forEach(drawTrafficCar);
+drones.forEach(drawDrone);
+bolts.forEach(b => drawBolt(b, t));
+sparks.forEach(s => {
+ctx.globalAlpha = Math.max(0, s.life);
+ctx.fillStyle = s.green ? "#7ee787" : s.blue ? "#58a6ff" : "#ffb347";
+ctx.beginPath(); ctx.arc(s.x, s.y, 3.4, 0, 7); ctx.fill();
+ctx.globalAlpha = 1;
+});
+drawTesla(1 + car.alt*.45, car.drift*.00045 + (car.alt > .05 ? -joyVec.x*.06 : 0), CARS[selected], t);
+if (state === "countdown") {
+const n = Math.ceil(countdown);
+ctx.font = "900 96px Orbitron, sans-serif"; ctx.textAlign = "center";
+ctx.fillStyle = "rgba(255,255,255,.95)"; ctx.shadowColor = "#e82127"; ctx.shadowBlur = 30;
+ctx.fillText(n > 0 ? n : "GO!", W/2, H/2+30); ctx.shadowBlur = 0;
+}
+const bp = Math.max(0, battery/100);
+ctx.fillStyle = "rgba(0,0,0,.55)"; ctx.fillRect(RX+6,H-14,RW-12,9);
+const bg = ctx.createLinearGradient(RX,0,RX+RW,0);
+bg.addColorStop(0, bp > .25 ? "#7ee787" : "#e82127"); bg.addColorStop(1, bp > .25 ? "#58a6ff" : "#ff6b6b");
+ctx.fillStyle = bg; ctx.fillRect(RX+6,H-14,(RW-12)*bp,9);
+ctx.restore();
+document.getElementById("scorePill").textContent = " " + Math.floor(score);
+document.getElementById("speedPill").textContent = Math.floor(speed) + " KM/H";
+const ap = document.getElementById("altPill");
+if (car.alt > .05) { ap.textContent = " FLYING " + Math.floor(car.alt*300) + " m"; ap.classList.add("flying"); }
+else { ap.textContent = " GROUND"; ap.classList.remove("flying"); }
+const bp2 = document.getElementById("battPill");
+bp2.textContent = " " + Math.floor(battery) + "%";
+bp2.classList.toggle("low", battery < 20);
+}
+function drawIdle() {
+drawScene(0);
+drawTesla(1, 0, CARS[selected], 0);
+}
+car = { x: W/2, y: H-150, alt: 0, drift: 0 };
+score = 0; battery = 100; speed = 0; roadOff = 0;
+traffic = []; drones = []; bolts = []; sparks = [];
+drawIdle();
+(function loop(t) {
+const dt = Math.min(.05, (t-tPrev)/1000 || .016); tPrev = t;
+if (state === "menu") drawIdle();
+else { update(dt, t); render(t); }
+requestAnimationFrame(loop);
+})(0);
+</script>
+</body>
+</html>
